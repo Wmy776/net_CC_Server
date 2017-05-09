@@ -1,9 +1,9 @@
-net_CC_Server: main.o servernet.o
-	$(CC) $(LDFLAGS) main.o servernet.o -o net_CC_Server
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
-servernet.o: servernet.c
-	$(CC) $(CFLAGS) -c servernet.c
+net_CC_Server: ./build/main.o ./build/servernet.o
+	cc ./build/main.o ./build/servernet.o -o net_CC_Server
+./build/main.o: ./src/main.c
+	cc -c ./src/main.c -o ./build/main.o
+./build/servernet.o: ./src/servernet.c
+	cc -c ./src/servernet.c -o ./build/servernet.o
 
 clean:
-	rm *.o net_CC_Server
+	rm ./build/*.o net_CC_Server
